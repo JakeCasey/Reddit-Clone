@@ -1,0 +1,13 @@
+ form {
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    }
+
+  .list {
+  	text-align: center;
+  }
+
+  .comment-content {
+  	margin-bottom: 30px;
+  }
