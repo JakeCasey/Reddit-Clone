@@ -103,7 +103,7 @@ router.put('/posts/:post/comments/:comment/upvote', function(req, res, next){
 });
 
 router.put('/posts/:post/comments/:comment/downvote', function(req, res, next){
-	req.comment.upvote(function(err, comment){
+	req.comment.downvote(function(err, comment){
 		if (err) {return next(err); }
 
 		res.json(comment);
