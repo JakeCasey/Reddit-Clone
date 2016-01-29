@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 require('./models/Posts');
 require('./models/Comments');
 
-mongoose.connect('mongodb://heroku_pjf4f01l:mongolab123@ds051665.mongolab.com:51665/heroku_pjf4f01l');
+mongoose.connect('mongodb://admin:hollycsy123@ds051665.mongolab.com:51665/heroku_pjf4f01l');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
