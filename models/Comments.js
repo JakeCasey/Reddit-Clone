@@ -19,7 +19,7 @@ CommentSchema.methods.upvote = function(cb) {
 
 CommentSchema.methods.downvote = function(cb) {
 	
-	this.upvotes += 1;
+	this.upvotes -= 1;
 	this.save(cb);
 };
 
