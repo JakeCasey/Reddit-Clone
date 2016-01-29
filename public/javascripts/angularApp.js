@@ -131,6 +131,9 @@ app.controller('MainCtrl', [
 		$scope.incrementUpvotes = function (post) {
 			posts.upvote(post);
 		};
+		$scope.decrementUpvotes = function (post) {
+			posts.downvote(post);
+		};
 		
 		
 	}
