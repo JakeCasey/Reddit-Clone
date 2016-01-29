@@ -78,6 +78,12 @@ app.factory('posts', ['$http', function($http){
 		});
 	};
 
+	o.downvoteComment = function(post, comment){
+		return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/downvote').success(function(data){
+			comment.upvotes -= 1;
+		});
+	};
+
 	return o;
 }]);
 
@@ -101,6 +107,10 @@ app.controller('PostsCtrl', [
 
 		$scope.incrementUpvotes = function(comment){
 			posts.upvoteComment(post, comment);
+		};
+
+		$scope.decrementUpvotes = function(comment){
+			posts.downvoteComment(post, comment);
 		};
 		
 	}
