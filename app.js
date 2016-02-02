@@ -4,13 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 
 
 
 var mongoose = require('mongoose');
+
 require('./models/Posts');
 require('./models/Comments');
+require('./models/Users');
 
+require('./config/passport');
+
+// mongoose.connect('mongodb://localhost/news');
 mongoose.connect('mongodb://admin:hollycsy123@ds051665.mongolab.com:51665/heroku_pjf4f01l');
 
 var routes = require('./routes/index');
@@ -29,6 +35,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(passport.initialize());
 
 app.use('/', routes);
 app.use('/users', users);
@@ -52,17 +60,17 @@ if (app.get('env') === 'development') {
       error: err
     });
   });
-}
+};
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+// // production error handler
+// // no stacktraces leaked to user
+// app.use(function(err, req, res, next) {
+//   res.status(err.status || 500);
+//   res.render('error', {
+//     message: err.message,
+//     error: {}
+//   });
+// });
 
 
 module.exports = app;
